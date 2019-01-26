@@ -1,0 +1,16 @@
+﻿  Player.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  TestGameState.cpp
+  Game.cpp
+  TileMap.cpp
+  Renderer.cpp
+  Renderable.cpp
+  GameState.cpp
+  GameObject.cpp
+  CollisionBox.cpp
+  AssetStorage.cpp
+  AnimatedSprite.cpp
+  WorldInAshes.vcxproj -> E:\WorldInAshescpp\WorldInAshes\Debug\WorldInAshes.exe
+  WorldInAshes.vcxproj -> E:\WorldInAshescpp\WorldInAshes\Debug\WorldInAshes.pdb (Partial PDB)
