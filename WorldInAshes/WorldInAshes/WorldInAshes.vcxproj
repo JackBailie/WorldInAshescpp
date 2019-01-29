@@ -132,6 +132,7 @@
     <ClCompile Include="GameObjects\Player.cpp" />
     <ClCompile Include="GameStates\TestGameState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WeaponBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AnimatedSprite.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameStates\TestGameState.h" />
+    <ClInclude Include="WeaponBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,9 +10,12 @@ public:
 	Player(sf::Vector2f startPos);
 	void Initialise();
 	void Update(float dt);
+	float GetFaceDirection();
+	void UpdateSpriteState();
 private:
 	AnimatedSprite* m_animatedSprite;
 	sf::Texture m_texture;
 	sf::Vector2f m_startPos;
 	CollisionBox* m_collisionBox;
+	bool m_isMoving;
 };

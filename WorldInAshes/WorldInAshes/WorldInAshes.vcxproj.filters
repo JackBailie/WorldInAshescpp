@@ -31,6 +31,12 @@
     <Filter Include="Header Files\GameStates">
       <UniqueIdentifier>{a2cf73ab-20db-4895-8696-bebdc389ba8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Weapons">
+      <UniqueIdentifier>{cb8300c0-0931-412b-9c38-78e3033c589d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Weapons">
+      <UniqueIdentifier>{72babbc9-f25e-4902-8657-144ec0abc598}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -69,6 +75,9 @@
     <ClCompile Include="Engine\TileMap.cpp">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="WeaponBase.cpp">
+      <Filter>Source Files\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -106,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Engine\TileMap.h">
       <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponBase.h">
+      <Filter>Header Files\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
