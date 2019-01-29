@@ -90,4 +90,5 @@ void AnimatedSprite::Update(float dt)
 void AnimatedSprite::SetAnimation(int animationIndex)
 {
 	m_currentAnimation = animationIndex;
+	setTextureRect(m_animations[animationIndex].m_frames[0]);
 }

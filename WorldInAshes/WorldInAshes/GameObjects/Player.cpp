@@ -6,7 +6,8 @@ Player::Player()
 }
 
 Player::Player(sf::Vector2f startPos):
-	m_startPos(startPos)
+	m_startPos(startPos),
+	m_isMoving(false)
 {
 }
 
@@ -24,6 +25,8 @@ void Player::Initialise()
 
 	m_animatedSprite->LoadAnimationsFromFile("Playerspr.txt");
 	m_animatedSprite->SetAnimation(3);
+	m_animatedSprite->setOrigin(m_animatedSprite->getTextureRect().width / 2, m_animatedSprite->getTextureRect().height * 0.9f);
+
 	m_componentStore->m_sprites.push_back(m_animatedSprite);
 
 	m_collisionBox = new CollisionBox(m_animatedSprite->getGlobalBounds(),this,m_componentStore,ctypeWall);
@@ -35,6 +38,9 @@ void Player::Update(float dt)
 	m_collisionBox->SetCollisionRect(m_animatedSprite->getGlobalBounds());
 	m_collisionBox->ScaleCollisionRect(0.5f, 1.0f);
 
+	UpdateSpriteState();
+
+	m_isMoving = false;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
@@ -43,9 +49,9 @@ void Player::Update(float dt)
 		if (!m_collisionBox->GetColliding(ctypeWall))
 		{
 			m_animatedSprite->move(-100 * dt, 0);
+			m_isMoving = true;
 		}
-
-		m_animatedSprite->SetAnimation(1);
+		
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 	{
@@ -54,9 +60,9 @@ void Player::Update(float dt)
 		if (!m_collisionBox->GetColliding(ctypeWall))
 		{
 			m_animatedSprite->move(100 * dt, 0);
+			m_isMoving = true;
 		}
 
-		m_animatedSprite->SetAnimation(3);
 	}
 
 	m_collisionBox->SetCollisionRect(m_animatedSprite->getGlobalBounds());
@@ -70,9 +76,9 @@ void Player::Update(float dt)
 		if (!m_collisionBox->GetColliding(ctypeWall))
 		{
 			m_animatedSprite->move(0, -100 * dt);
+			m_isMoving = true;
 		}
 
-		m_animatedSprite->SetAnimation(0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 	{
@@ -81,9 +87,9 @@ void Player::Update(float dt)
 		if (!m_collisionBox->GetColliding(ctypeWall))
 		{
 			m_animatedSprite->move(0, 100 * dt);
+			m_isMoving = true;
 		}
 
-		m_animatedSprite->SetAnimation(2);
 	}
 
 	sf::Vector2f cameraPos;
@@ -100,4 +106,68 @@ void Player::Update(float dt)
 		std::cout << "colliding" << std::endl;
 	}
 
+}
+
+float Player::GetFaceDirection()
+{
+	sf::Vector2i mousePos = sf::Mouse::getPosition(*m_componentStore->m_renderWindow);
+	sf::Vector2f playerScreenPos;
+	playerScreenPos.x = m_componentStore->m_renderWindow->getSize().x / 2; playerScreenPos.y = m_componentStore->m_renderWindow->getSize().y / 2;;
+
+	int xdist = mousePos.x - (int)playerScreenPos.x;
+	int ydist = mousePos.y - (int)playerScreenPos.y;
+
+	return std::atan2(ydist, xdist) / 3.141f * 180;
+}
+
+void Player::UpdateSpriteState()
+{
+	float faceDirection = GetFaceDirection();
+
+	std::cout << faceDirection << std::endl;
+
+	if (faceDirection > -45.0f && faceDirection < 45.0f)
+	{
+		if (m_isMoving)
+		{
+			m_animatedSprite->SetAnimation(3);
+		}
+		else
+		{
+			m_animatedSprite->SetAnimation(7);
+		}
+	}
+	else if (faceDirection > 45.0f && faceDirection < 135.0f)
+	{
+		if (m_isMoving)
+		{
+			m_animatedSprite->SetAnimation(2);
+		}
+		else
+		{
+			m_animatedSprite->SetAnimation(6);
+		}
+	}
+	else if (faceDirection > -135.0f && faceDirection < -45.0f)
+	{
+		if (m_isMoving)
+		{
+			m_animatedSprite->SetAnimation(0);
+		}
+		else
+		{
+			m_animatedSprite->SetAnimation(4);
+		}
+	}
+	if (faceDirection > 135.0f || faceDirection < -135.0f)
+	{
+		if (m_isMoving)
+		{
+			m_animatedSprite->SetAnimation(1);
+		}
+		else
+		{
+			m_animatedSprite->SetAnimation(5);
+		}
+	}
 }
