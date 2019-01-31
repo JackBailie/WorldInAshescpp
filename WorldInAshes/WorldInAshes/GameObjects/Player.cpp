@@ -124,8 +124,6 @@ void Player::UpdateSpriteState()
 {
 	float faceDirection = GetFaceDirection();
 
-	std::cout << faceDirection << std::endl;
-
 	if (faceDirection > -45.0f && faceDirection < 45.0f)
 	{
 		if (m_isMoving)
