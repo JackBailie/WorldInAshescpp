@@ -7,11 +7,14 @@ struct WeaponDef
 	int				m_damage;
 };
 
-class WeaponBase
+class Weapon
 {
 public:
-	WeaponBase();
-	~WeaponBase();
+	Weapon();
+	Weapon(WeaponDef* weaponDef);
+	~Weapon();
+
+	void Fire();
 private:
-	WeaponDef
+	WeaponDef* m_weaponDef;
 };

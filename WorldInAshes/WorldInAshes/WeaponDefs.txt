@@ -1,1 +1,3 @@
 22_Pistol 25 
+22_Rifle 25
+Assault_Rifle 45

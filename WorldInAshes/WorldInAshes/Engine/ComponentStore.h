@@ -2,6 +2,7 @@
 #include<SFML\Graphics.hpp>
 #include"AnimatedSprite.h"
 #include"AssetStorage.h"
+#include"WeaponDefContainer.h"
 
 class GameObject;
 class CollisionBox;
@@ -20,4 +21,6 @@ struct ComponentStore
 	std::vector<sf::Sprite*> m_sprites;
 	std::vector<CollisionBox*> m_collisionBoxes;
 	sf::View m_view;
+	WeaponDefContainer m_weaponContainer;
+
 };

@@ -8,7 +8,7 @@ GameState::GameState():
 	m_persistent(false)
 {
 	m_componentStore = new ComponentStore();
-	
+	m_componentStore->m_weaponContainer.LoadWeaponDef("WeaponDefs.txt");
 }
 
 GameState::~GameState()
